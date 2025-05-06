@@ -4,8 +4,8 @@ class UserController {
     async create(req, res) {
         const verifyUser = await Users.findOne({
             where: {
-                email: req.body.email,
-            },
+                email: req.body.email
+            }
         });
 
         if(verifyUser) {
@@ -13,7 +13,12 @@ class UserController {
         };
 
         const user = await Users.create(req.body);
-        res.send({ user });
+        
+        if(!user) {
+            return res.status(400).json({message: 'Failed to create a user!'});
+        }
+
+        return res.send({ message: 'User created!' });
     };
 };
 

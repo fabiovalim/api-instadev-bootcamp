@@ -82,6 +82,26 @@ class UserController {
 
         return res.status(200).json({ message: 'User updated...' });
     }
+
+    async delete(req, res) {
+        const userToDelete = await Users.findOne({
+            where: {
+                id: req.userId
+            }
+        });
+
+        if(!userToDelete) {
+            return res.statur(400).json({ message: 'User not exists...' });
+        }
+
+        await Users.destroy({
+            where: {
+                id: req.userId
+            }
+        });
+
+        return res.status(200).json({ message: 'User deleted...' })
+    }
 };
 
 module.exports = new UserController();

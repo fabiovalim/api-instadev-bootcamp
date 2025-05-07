@@ -12,10 +12,12 @@ routes.post('/user', schemaValidator(UserSchema), UserController.create);
 
 routes.post('/auth', schemaValidator(AuthSchema), AuthenticationController.authenticate);
 
-routes.use(AuthenticationMiddleware);
-
 routes.get('/health', (req, res) => {
     return res.send({message: `Connected with success!`});
 });
+
+routes.use(AuthenticationMiddleware);
+
+routes.put('/user', UserController.update);
 
 module.exports = routes;

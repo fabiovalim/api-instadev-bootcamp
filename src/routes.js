@@ -20,7 +20,8 @@ routes.put('/user', UserController.update);
 routes.delete('/user', UserController.delete);
 routes.get('/user-profile', UserController.userProfile);
 routes.post('/upload', upload.single('image'), FileController.upload);
-routes.post('/posts', schemaValidator(createPostSchema), PostController.create);
-routes.delete('/delete-post/:id', PostController.delete);
+routes.post('/post', schemaValidator(createPostSchema), PostController.create);
+routes.delete('/post/:id', PostController.delete);
+routes.put('/post/:id', PostController.update);
 
 module.exports = routes;

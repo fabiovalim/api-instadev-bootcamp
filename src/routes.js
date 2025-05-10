@@ -14,7 +14,7 @@ const routes = new Router();
 
 routes.post('/user', schemaValidator(UserSchema), UserController.create);
 routes.post('/auth', schemaValidator(AuthSchema), AuthenticationController.authenticate);
-routes.get('/health', (req, res) => {return res.send({message: `Connected with success!`})});
+routes.get('/health', (req, res) => {return res.send({message: `Bom momento...`})});
 routes.use(AuthenticationMiddleware);
 routes.put('/user', UserController.update);
 routes.delete('/user', UserController.delete);
